@@ -1,0 +1,154 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: left;
+    gap: 0.5em;
+    padding: 1em 0;
+}
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 2em;
+    padding: 0 1em;
+    gap:1em;
+}
+
+/* CARD for every task */
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    gap: 1em;
+}
+.card {
+    display: grid;
+    grid-template-columns: auto 2em;    
+    border-style: solid;
+    border-width: 0.2em;
+    border-color: var(--primary-color);
+    border-radius: 2em;
+    background-color: var(--background-color);
+    max-width: 100%;
+    min-height: 5em;
+    min-width: 10em;
+}
+.content {
+    padding: 0.5em 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.3em;
+    overflow-x: auto;
+}
+.title {
+    color: var(--primary-color);
+    font-size: larger;
+    font-weight: 600;
+    text-align: left;
+}
+.details {
+    background-color: var(--background-color);
+    color: var(--primary-color)
+}
+.date {
+    color: var(--contrast-color);
+    text-align: right;
+    font-size: x-small;
+}
+
+/* FORM */
+form {
+    position: relative;        /* modal form */
+    top:7em;
+    z-index: 1;
+    width: 80%;
+    max-width: 60em;        /* empty margins for desktop */
+    display: flex;
+    flex-direction: column;
+    background-color: var(--contrast-light-color);
+    padding: 1em;
+    gap: 0.3em;
+    border-style: solid;
+    border-width: 0.2em;
+    border-color: var(--primary-color);
+    border-radius: 2em;
+}
+label {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+input, textarea {
+    resize: none;
+    border-radius: 1em;
+    border: 2px solid var(--background-color);
+    padding: 0.5em
+}
+.warning {
+    font-size: 0.6em;
+}
+.error {
+    color: var(--error-color);
+}
+input.ng-invalid.ng-touched , input.ng-invalid.ng-dirty {
+  border: 2px solid var(--error-color);
+}
+
+/* BUTTONS */
+.actions-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    gap: 0.1em;
+}
+.actions-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.1em;
+}
+.button-tooltip {
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.button-tooltip:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+.button-tooltip .tooltiptext {
+  visibility: hidden;
+  width: 8em;
+  background-color: var(--contrast-color);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 1s;
+  transition-delay: 1s;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 2;
+  top: 110%;
+  left: 50%;
+  margin-left: -60px;
+}
+.button-tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+.button-tooltip:disabled .tooltiptext {
+  visibility: hidden;
+}

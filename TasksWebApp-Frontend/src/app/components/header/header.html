@@ -1,0 +1,16 @@
+<div class="container">
+    <h1 routerLink="/">{{ appName() }}</h1>
+    <nav>
+        <a href="https://github.com/piturriagit/TasksWebApp" target="_blank" class="tooltip">GITHUB<span class=tooltiptext>Code in GitHub</span></a>
+        <a href="https://github.com/piturriagit/Angular" target="_blank" class="tooltip">FE<span class=tooltiptext>FrontEnd code in GitHub</span></a>
+        <a href="https://github.com/piturriagit/SpringBootJava" target="_blank" class="tooltip">BE<span class=tooltiptext>BackEnd code in GitHub</span></a>
+        <a href="http://localhost:8080/swagger-ui/index.html" target="_blank" class="tooltip">API<span class=tooltiptext>API in Swagger</span></a>
+        <a href="http://localhost:8080/h2-console" target="_blank" class="tooltip">DB<span class=tooltiptext>DB H2 (db, db1)</span></a>
+        @if(loggedUser!='') {
+            <div class="tooltip" (click)="onLogout()" >
+                <app-image-icon [imageSrc]="authImage()" [imageAlt]="loggedUser" />
+                <span class=tooltiptext>{{ loggedUser }}</span>
+            </div>
+        }
+    </nav>
+</div>

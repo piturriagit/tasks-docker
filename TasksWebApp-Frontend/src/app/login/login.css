@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;    
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 1em auto;
+    padding: 4em;
+    width: 24em;
+    background-color: var(--background-color);
+    border-style: solid;
+    border-width: 0.2em;
+    border-color: var(--primary-color);
+    border-radius: 2em;
+}
+label {
+    display: flex;
+    flex-direction: column;
+}
+input {
+    padding: 1em;
+}
+button {
+    margin: 0 3em;
+    padding: 1em;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 0.2em;
+    border-color: var(--primary-color);
+    border-radius: 2em;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+button:disabled {
+    cursor: inherit;
+}
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+.login {
+    background-color: var(--secondary-color);
+}
+.register {
+    background-color: var(--contrast-color);
+}
+.alternate {
+    margin: 0 auto;
+}
+.alternate > span {
+    text-decoration: dotted underline;
+    cursor: pointer;
+}
+.error {
+    font-size: 0.6em;
+    color: var(--error-color);
+}

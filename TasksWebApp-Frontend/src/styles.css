@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #002e51;
+  --secondary-color: #4ed0e1;
+  --contrast-color: #ff7043;
+  --contrast-light-color: #ffab92;
+  --background-color: #e1f7fb;
+  --error-color: #ff0000;
+  --opacity: 0.95;
+
+  --red-to-pink-to-purple-vertical-gradient: linear-gradient(
+    180deg,
+    var(--orange-red) 0%,
+    var(--vivid-pink) 50%,
+    var(--electric-violet) 100%
+  )
+}
+
+* {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  background-image: url('../public/wallpaper.jpg');
+  background-color: #ffffff;
+}

@@ -1,0 +1,30 @@
+.container {
+    position: sticky;
+    bottom:0;
+    height: 100%;
+    padding: 0 3em;
+    background-color: var(--contrast-color);
+    color: var(--background-color);
+    opacity: var(--opacity);
+    border-style: solid;
+    border-color: var(--primary-color);
+    border-width: 0.2em;
+    border-radius: 2em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.button {
+    padding: 1vw;
+    text-decoration: none;
+}
+.button > img {
+    height: 1.5vw;
+}
+@media screen and (max-width: 540px) {
+    .container {
+        padding: 0 0.3em;       /* decrease padding for mobile */
+    }
+}

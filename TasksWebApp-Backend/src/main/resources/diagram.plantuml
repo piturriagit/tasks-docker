@@ -1,0 +1,144 @@
+@startuml
+!define primary_key(x) <b><color:#b8861b><&key></color> x</b>
+!define foreign_key(x) <color:#aaaaaa><&key></color> x.
+!define column(x) <color:#efefef><&media-record></color> x.
+
+package BackEnd <<Rectangle>> {
+package App <<folder>> {
+
+class TasksWebAppApplication {
+  + main(String[]): void
+}
+
+
+package controller <<Folder>> {
+  class MyTaskController {
+    - service: MyTaskService
+    + public MyTaskController(MyTaskService)
+    + getAllTasks() : ResponseEntity<List<MyTask>>
+    + getTaskById(int): ResponseEntity<MyTask>
+    + addTask(MyTask) : ResponseEntity<MyTask>
+    + updateTask(int, MyTask): ResponseEntity<MyTask>
+    + deleteTaskById(int) : ResponseEntity<Boolean>
+    + deleteAllTasks(): ResponseEntity<?>
+  }
+}
+
+package service <<Folder>> {
+  class MyTaskService {
+    - repository: MyTaskRepository
+    + public MyTaskRepository(MyTaskRepository)
+    + getAllTasks() : List<MyTask>
+    + getTaskById(int): MyTask
+    + addTask(MyTask) : MyTask
+    + updateTask(int, MyTask): MyTask
+    + deleteTaskById(int) : Boolean
+    + deleteAllTasks(): void
+  }
+}
+
+package repository <<Folder>> {
+  interface MyTaskRepository
+  interface JpaRepository<MyTask, Integer> {
+    + findAll() : List<MyTask>
+    + findById() : optional MyTask
+    + save(MyTask) : MyTask
+    + deleteById(Integer) : void
+    + deleteAll(): void
+  }
+}
+
+package model <<Folder>> {
+  class MyTask {
+    - id: int
+    - title: String
+    - description: String
+    - creationDate: LocalDateTime
+  }
+}
+
+package DataBase <<Rectangle>> {
+package tasksdb <<Database>> {
+  entity tasks {
+    primary_key(id): UUID <<PK>>
+    title: VARCHAR(255) NOT NULL
+    description: VARCHAR(255)
+    creation_date: TIMESTAMP(6)
+  }
+}
+}
+
+
+MyTaskController ..> MyTaskService
+MyTaskService ..> MyTaskRepository
+MyTaskRepository --|> JpaRepository : extends
+MyTaskRepository ..> MyTask
+MyTask .. tasks
+MyTaskRepository <..> tasks : JPA
+}
+}
+
+package FrontEnd <<Rectangle>> {
+package app <<folder>> {
+  class App
+  class Routes
+  package pages <<Rectangle>> {
+    class Home
+    class Error
+  }
+App --> Routes
+Routes ..> Home
+Home ..> Error
+Routes ..> Error
+Error ..> Routes
+  package components <<folder>> {
+    class Header {
+      - appName : input()
+    }
+    class Footer {
+      - author : input
+      - authorContact : input
+      - imageMail : signal
+      - altMail : signal
+      - authorLinkedin : input
+      - imageLinkedin : signal
+      - altLinkedin : signal
+      - today : input
+    }
+    class ImageIcon {
+      - imageSrc : input
+      - imageAlt : input
+      - clickFunction : input
+    }
+    class Feedback {
+      - image : input
+      - title : input
+      - message : input
+      - warning : input
+      - link : input
+    }
+  }
+  package services <<folder>> {
+    class TasksService {
+      - getTasks() : Observable<>
+      - postTask(Task) : Obaservable<>
+      - putTask(Task) : Observable<Task>
+      - deleteTask(number) : Observable
+      - deleteTasks() : Observable<>
+    }
+  }
+  package model <<folder>> {
+    class Task {
+      - id : number
+      - title : string
+      - description : string
+      - creationDate : Date
+    }
+  }
+}
+}
+note right of BackEnd: localhost:8080\nlocalhost:8080/swagger-ui/index.html
+note right of FrontEnd: localhost:4200
+note right of DataBase: localhost:8080/h2-console/ (db,db1)
+note "default credentials (test,test)" as N1 #lightblue
+@enduml

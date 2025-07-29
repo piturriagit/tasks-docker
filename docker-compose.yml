@@ -1,0 +1,36 @@
+services:
+  my_tasks_backend:
+    build: ./TasksWebApp-Backend
+    mem_limit: 1024m
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL : jdbc:mysql://mysqldb:3306/DB_MYTASKS?createDatabaseIfNotExist=true&serverTimezone=UTC
+      DB_USERNAME : docker
+      DB_PASSWORD : secret.docker1
+      DB_DRIVER : com.mysql.cj.jdbc.Driver
+      DDL_AUTO : update
+      DATA_LOAD : false
+      SQL_ENABLE : true
+    restart: always
+    depends_on:
+      mysqldb:
+        condition: service_healthy
+  mysqldb:
+    image: mysql:9.2.0
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: secret.root1
+      MYSQL_PASSWORD: secret.docker1
+      MYSQL_USER: docker
+      MYSQL_DATABASE: DB_MYTASKS
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
+  my_tasks_frontend:
+    build: ./tasks-frontend
+    ports:
+      - 4200:4200

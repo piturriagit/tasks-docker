@@ -1,0 +1,30 @@
+<div class="container">
+    <form #form="ngForm">
+        <label for="username">Username
+        <input type="text" 
+            [(ngModel)]="formUsername"
+            #name="ngModel"
+            name="username" 
+            placeholder="user" 
+            required>
+        </label>
+        <label for="username">Password
+        <input type="password" 
+            [(ngModel)]="formPassword" 
+            name="password" 
+            placeholder="u@123" 
+            required>
+        </label>
+        <span class="error">{{ feedback() }}</span>
+        @if(isRegister()) {
+            <button class="button register" type="submit" name="login" 
+            [disabled]="form.invalid"
+            (click)="onRegister()">{{ label[isRegister()] }}</button>
+        } @else {
+            <button class="button login" type="submit" name="login" 
+            [disabled]="form.invalid"
+            (click)="onLogin()">{{ label[isRegister()] }}</button>
+        }
+        <p class="alternate" (click)="onAlternate()">Or you can <span>{{ alternate[isRegister()] }}</span></p>
+    </form>
+</div>

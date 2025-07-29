@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3em;
+}
+img {
+    object-fit: cover;
+    height:10em;
+}
+.title {
+    font-size: 3em;
+    padding: 1em;
+}
+.message {
+    font-size: 1.5em;
+}
+.warning {
+    color: var(--contrast-color);
+    font-size: 0.8em;
+}
+
+@media screen and (max-width: 540px) {
+    img {
+        height:6em;
+    }
+    .title {
+        font-size: 2em;
+    }
+    .message {
+        font-size: 1em;
+    }
+    .contact {
+        font-size: 0.5em;
+    }
+}
+@media screen and (max-height: 500px) {
+    .container{
+        padding: 0;
+    }
+    img {
+        height:6em;
+    }
+    .title {
+        font-size: 2em;
+        padding: 0;
+    }
+    .message {
+        font-size: 1em;
+    }
+    .contact {
+        font-size: 0.5em;
+    }
+}

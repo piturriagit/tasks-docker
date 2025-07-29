@@ -1,0 +1,11 @@
+<div class="container">
+    <p>Created by {{author() }} ©{{ today() | date:'yyyy'}} All Rights Reserved</p>
+    <div>
+        <a class="button" href="{{ authorContact() }}">
+            <app-image-icon [imageSrc]="imageMail()" [imageAlt]="altMail()"/>
+        </a>
+        <a class="button" href="{{ authorLinkedin() }}">
+            <app-image-icon [imageSrc]="imageLinkedin()" [imageAlt]="altLinkedin()"/>
+        </a>
+    </div>
+</div>
