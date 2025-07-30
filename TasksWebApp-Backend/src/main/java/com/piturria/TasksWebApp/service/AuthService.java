@@ -50,10 +50,9 @@ public class AuthService {
     }
 
     public BearerToken generateToken(String username) {
-        long seconds = 600;
         BearerToken token = new BearerToken();
         token.setUsername(username);
-        token.setJwt(jwtService.generateToken(username, seconds));
+        token.setJwt(jwtService.generateToken(username));
         token.setExpiration(jwtService.extractExpiration(token.getJwt()));
         return token;
     }

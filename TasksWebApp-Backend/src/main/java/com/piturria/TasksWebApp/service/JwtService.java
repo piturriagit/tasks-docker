@@ -19,20 +19,20 @@ public class JwtService {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
     }
 
-    public String generateRefreshToken(String username, long seconds) {
+    public String generateRefreshToken(String username) {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + seconds * 604_800_000))        //7 days
+                .setExpiration(new Date(System.currentTimeMillis() + 604_800_000))        //7 days
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    public String generateToken(String username, long seconds) {
+    public String generateToken(String username) {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + seconds * 3600_000))           //1 hour
+                .setExpiration(new Date(System.currentTimeMillis() + 3600_000))           //1 hour
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
