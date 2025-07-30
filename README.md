@@ -210,7 +210,7 @@ $ curl -i -X GET -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcGl1
 ```
 * You can also provide the first user and password in database, but with the password encoded (HS256 with the SECRET_KEY).
 
-## Prepare Frontend
+## Run Frontend
 1. Install nodejs and npm. 
   * You can use a For mac you can use Node Version Manager: https://www.nodejs.tech/es/download/package-manager#nvm
     * For mac this will be:
@@ -250,7 +250,6 @@ TasksWebApp-Frontend$ ng serve
   * By default it will redirects to login
   * Once logged, authentication information will be sotred as "loginData" in your browser (local storage) so you won't need to authenticate again in that browser until JWT expires.
 
-## Run Frontend
 3. Run frontend for specific deployment port
 ```shell
 TasksWebApp-Frontend$ ng serve --port 4201
@@ -272,7 +271,7 @@ NOTE: Raw file sizes do not reflect development server per-request transformatio
   * Access the frontend in the configured port: http://localhost:4201/
 
 # Not sure yet (wokring on it...)
-## Integrates frontend inside the backend
+## Integrates frontend inside the backend?
   * Build
 ```shell
 TasksWebApp-Frontend$ npm install                                                                    
@@ -310,7 +309,7 @@ TasksWebApp-Frontend$ ls -ltra dist/tasks-frontend
     drwxr-xr-x@ 22 patricia  staff    704 Jul 30 16:33 browser
 ```
 
-## Run app in docker
+## Run app in docker?
 1. Install docker and run it (i am using desktop version)
 * For example, for mac https://docs.docker.com/desktop/setup/install/mac-install/
 ```shell
